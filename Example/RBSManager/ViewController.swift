@@ -67,7 +67,7 @@ class ViewController: UIViewController, RBSManagerDelegate, ColorPickerDelegate 
         turtlePublisher = turtleManager?.addPublisher(topic: "/turtle1/cmd_vel", messageType: "geometry_msgs/Twist", messageClass: TwistMessage.self)
         turtleSubscriber = turtleManager?.addSubscriber(topic: "/turtle1/pose", messageClass: PoseMessage.self, response: { (message) -> (Void) in
             // store the message for other operations
-            self.lastPoseMessage = message as! PoseMessage
+            self.lastPoseMessage = (message as! PoseMessage)
             
             // update the view with message data
             self.updateWithMessage(self.lastPoseMessage)
